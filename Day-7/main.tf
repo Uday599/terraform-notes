@@ -3,14 +3,14 @@ provider "aws" {
 }
 
 provider "vault" {
-  address = "<>:8200"
+  address = "<>:8200"    # http://<IP>:8200
   skip_child_token = true
 
   auth_login {
     path = "auth/approle/login"
 
     parameters = {
-      role_id = "<>"
+      role_id = "<>"    # provide role and secret id
       secret_id = "<>"
     }
   }
@@ -27,6 +27,6 @@ resource "aws_instance" "my_instance" {
 
   tags = {
     Name = "test"
-    Secret = data.vault_kv_secret_v2.example.data["foo"]
+    Secret = data.vault_kv_secret_v2.example.data["username"]  # username is the key in test-secret
   }
 }
