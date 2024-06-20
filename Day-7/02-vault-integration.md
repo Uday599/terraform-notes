@@ -120,7 +120,8 @@ vault write auth/approle/role/terraform \
     secret_id_num_uses=40 \
     token_policies=terraform
 ```
-hint: we are attaching terraform role to terraform policy created earlier
+
+hint: we are attaching terraform role to terraform policy created earlier (like attaching policy to IAM role in AWS)
 
 3. **Generate Role ID and Secret ID**:
 
